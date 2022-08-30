@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+body{
+	
+	margin:0;
+	padding:0;
+}
+
+
+td.header_menu {
+	
+	font-size: 16px;
+	color: #ffffff;
+	font-family:Arial;
+	font-weight:center;
+	text-decoration: none;
+}
+
+a:link {
+	
+	text-decoration: none;
+	color:#ffffff;
+}
+
+a:visited {
+	
+	text-decoration: none;
+	color:#ffffff;
+}
+
+a:hover {
+	text-decoration: none;
+	text-decoration: underline;
+	color:#a60000;
+}
+span.login_text{
+	
+	color:#ffffff;
+	
+}

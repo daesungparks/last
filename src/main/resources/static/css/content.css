@@ -1,0 +1,194 @@
+@charset "UTF-8";
+
+span.content_text {
+	
+	font-size:20px;
+	color: #ffffff;
+	font-family: malgun;
+	font-weight:center;
+}
+
+span.info_text {
+	
+  font-size: 20px;
+   color: #0a0468;
+   font-family: malgun;
+   font-weight: normal;
+}
+
+input.input_box1 {
+	
+	border:1px solid rgb(255, 255, 255);
+	background-color: rgb(0, 0, 0);
+	width: 200px;
+	padding:5px;
+	font-family: Arial;
+	font-size: 18px;
+	color: rgb(255, 255, 255);
+		
+}
+input.input_box2 {
+	
+	border:1px solid rgb(255, 255, 255);
+	background-color: rgb(0, 0, 0);
+	width: 300px;
+	padding:5px;
+	font-family: Arial;
+	font-size: 18px;
+	color: rgb(255, 255, 255);
+		
+}
+
+textarea.questiontext{
+	
+	border:1px solid rgb(255, 255, 255);
+	background-color: #000000;
+	width: 1000px;
+	padding:5px;
+	font-family: Arial;
+	font-size: 18px;
+	color: #ffffff;
+	
+}
+
+textarea.questiontext1{
+	
+	border:1px solid rgb(255, 255, 255);
+	background-color: #000000;
+	width: 900px;
+	padding:5px;
+	align:left;
+	font-family: Arial;
+	font-size: 18px;
+	color: #ffffff;
+	
+}
+
+input.button {
+	
+	border:2px solid #ffffff;
+	background-color: rgb(0, 0, 0);
+	text-align:center;
+	width: 170px;
+	padding:5px;
+	font-family: Arial;
+	font-size: 18spx;
+	color: #ffffff;
+	
+}
+
+input.button1 {
+	
+	border:2px solid #ffffff;
+	background-color: rgb(0, 0, 0);
+	text-align:center;
+	width: 170px;
+	height:170px;
+	padding:5px;
+	font-family: Arial;
+	font-size: 25px;
+	text-size:20px;
+	color: #ffffff;
+	
+}
+input.var {
+	
+	border:2px solid #ffffff;
+	background-color : #c0c0c0;
+	text-align : center;
+	
+}
+
+input.button:hover{
+	
+	background-color : rgb(255, 0, 0);
+}
+.outer{
+		width:60%;
+		min-width : 650px;
+		background: rgb(248, 249, 250);
+		box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 4px 0px;
+		margin:auto;
+		margin-top : 70px;
+		margin-bottom : 70px;
+	}
+	
+	#joinForm {
+		width : 400px;
+		margin: auto;
+		padding: 10px;
+	}
+	
+	#joinForm h1 {
+		text-align:center;
+	}
+	
+
+	.input_area {
+	
+	    border: solid 3px #000000;
+	    padding : 10px 10px 10px 10px;
+	    background : #ffffff;
+	    
+	}
+	.input_areas {
+	
+	    border: solid 3px #000000;
+	    padding : 10px 10px 10px 10px;
+	    background : #ffffff;
+	    width : 900px
+	    
+	}
+	
+
+	.input_area input:not([type=checkbox]) {
+		width : 250px;
+		height : 30px;
+		border: 0px;
+	}
+	
+	.btnArea {
+		text-align:center;
+		padding : 50px;
+	}
+	
+	button {
+		width : 100px;
+		height : 35px;
+		border : 0px;
+		color:white;
+		background:#282A35;
+		margin : 5px;
+	}
+	
+	td#comment_box{
+		
+		  height:112px;
+    position:relative;
+    background-color:#808080;
+    border-top:solid 1px #cccccc;
+	
+	}
+	td#comment_box #title_comment{
+	 position:absolute;
+    top:15px;
+    left:300px;
+	}
+	
+	td#comment_box textarea {
+	  width:800px;
+    height:78px;
+    position:absolute;
+    top:15px;
+    left:400px;	
+	
+	}
+	td#comment_box #ok_ripple{
+	    position:absolute;
+    top:15px;
+    left:1210px;	
+    
+	
+	}
+	
+

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org/DTD Mapper 3.0/EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+
+   
+<mapper namespace="com.ds4.dao.IDao">
+	<!--member sql-->
+	<insert id="joinDao">
+		INSERT INTO web_member (mid, mpw, mname, memail,mtel,maddress,maddresss,maddressss) VALUES(#{param1},#{param2},#{param3},#{param4},#{param5},#{param6},#{param7},#{param8})
+	
+	</insert>
+	
+	<select id="checkIdDao" resultType="int">
+		SELECT COUNT(*) FROM web_member WHERE mid=#{param1}
+	</select>
+	
+	<select id="checkIDPwDao" resultType="int">
+		SELECT COUNT(*) FROM web_member WHERE mid=#{param1} AND mpw=#{param2}
+	</select>
+	
+	<select id="memberInfoDao" resultType="com.ds4.dto.MemberDto">
+		SELECT * FROM web_member WHERE mid=#{param1, jdbcType = VARCHAR}
+	</select>
+	
+	<select id="calmemberInfoDao" resultType="com.ds4.dto.CalDto">
+		SELECT * FROM web_cal WHERE cid=#{param1}
+	</select>
+	
+	 <update id="infomodifyDao">
+      update web_member set mpw=#{param1}, mname=#{param2}, memail=#{param3}, mtel=#{param4} where mid=#{param5}
+   </update>
+   
+   <select id="IdCheckFormDao" resultType="int">
+   		SELECT COUNT(*) FROM web_member WHERE mid=#{param1}
+   </select>
+   
+   <delete id="mDeleteDao">
+      DELETE FROM web_member WHERE mid=#{param1} and mpw=#{param2}
+   </delete>
+   
+   <select id="findDao" resultType="com.ds4.dto.MemberDto">
+   		select * from web_member where mname=#{param1, jdbcType = VARCHAR} and memail=#{param2, jdbcType = VARCHAR}
+   </select>
+   
+      <select id="findpwDao" resultType="com.ds4.dto.MemberDto" >
+   		select * from web_member where mid=#{param1} and mname=#{param2} and memail=#{param3}
+   </select>
+   
+   
+   	<!--mmember sql-->
+	<insert id="mjoinDao">
+		INSERT INTO web_mmember (mmid, mmpw, mmname, mmemail,mmtel) VALUES(#{param1, jdbcType = VARCHAR},#{param2},#{param3},#{param4},#{param5})
+	
+	</insert>
+	
+	<select id="mcheckIdDao" resultType="int">
+		SELECT COUNT(*) FROM web_mmember WHERE mmid=#{param1, jdbcType = VARCHAR}
+	</select>
+	
+	<select id="mcheckIDPwDao" resultType="int">
+		SELECT COUNT(*) FROM web_mmember WHERE mmid=#{param1, jdbcType = VARCHAR} AND mmpw=#{param2}
+	</select>
+	
+	<select id="mmemberInfoDao" resultType="com.ds4.dto.MMemberDto">
+		SELECT * FROM web_mmember WHERE mmid=#{param1}
+	</select>
+	
+	 <update id="minfomodifyDao">
+      update web_mmember set mmpw=#{param1}, mmname=#{param2}, mmemail=#{param3}, mmtel=#{param4} where mmid=#{param5}
+   </update>
+   
+   <select id="mIdCheckFormDao" resultType="int">
+   		SELECT COUNT(*) FROM web_mmember WHERE mmid=#{param1}
+   </select>
+   
+   <delete id="mmDeleteDao">
+      DELETE FROM web_mmember WHERE mmid=#{param1} and mmpw=#{param2}
+   </delete>
+   
+   
+   
+   <!--  board Sql -->
+   	 <insert id="writeDao">
+      insert into web_board(qnum, qid, qname, qcontent, qemail) values(web_board_seq.nextval,#{param1},#{param2},#{param3},#{param4})
+   </insert>
+   
+     <select id="listDao" resultType="com.ds4.dto.BoardDto">
+      select * from web_board order by qnum desc
+   </select>
+   
+  <select id="contentViewDao" resultType="com.ds4.dto.BoardDto">
+		SELECT * FROM web_board WHERE qnum=#{param1} 
+	</select>
+	
+	
+	
+	<delete id="deleteDao">
+		DELETE FROM web_board WHERE qnum=#{param1}
+	</delete>
+	
+	<update id="qmodifyDao">
+		UPDATE web_board SET qname=#{param1}, qcontent=#{param2}, qemail=#{param3} WHERE qnum=#{param4}
+	</update>
+	
+
+
+	  <select id="qTitleSearchlist" resultType="com.ds4.dto.BoardDto">
+      SELECT t1.qnum, t1.qid, t1.qname, t1.qcontent,t1.qemail, t1.qdate,  t2.mname
+       FROM web_board T1, web_member T2
+       WHERE t1.qid = t2.mid and qid like '%' || #{param1} || '%'
+       order by t1.qnum desc 
+   </select>
+   
+   <select id="qContentSearchlist" resultType="com.ds4.dto.BoardDto">
+      SELECT t1.qnum, t1.qid, t1.qname, t1.qcontent,t1.qemail, t1.qdate , t2.mname
+       FROM web_board T1, web_member T2
+       WHERE t1.qid = t2.mid and qcontent like '%' || #{param1} || '%'
+       order by t1.qnum desc 
+   </select>
+   
+   <select id="qNameSearchlist" resultType="com.ds4.dto.BoardDto">
+   SELECT t1.qnum, t1.qid, t1.qname, t1.qcontent,t1.qemail, t1.qdate,  t2.mname
+       FROM web_board T1, web_member T2
+       WHERE t1.qid = t2.mid and qname like '%' || #{param1} || '%'
+       order by t1.qnum desc 
+   </select>
+
+
+
+
+	<!--  cal Sql -->
+	 <insert id="calwriteDao">
+      insert into web_cal(cnum, cid, cname, cstartdate, cenddate , cenjoy , ctech,cmemo) values(web_cal_seq.nextval,#{param1, jdbcType = VARCHAR},#{param2, jdbcType = VARCHAR},#{param3, jdbcType = VARCHAR},#{param4, jdbcType = VARCHAR},#{param5, jdbcType = VARCHAR},#{param6, jdbcType = VARCHAR},#{param7, jdbcType = VARCHAR})
+   </insert>
+   
+     <select id="callistDao" resultType="com.ds4.dto.CalDto">
+      select * from web_cal order by cnum desc
+   </select>
+   
+  <select id="calcontentViewDao" resultType="com.ds4.dto.CalDto">
+		SELECT * FROM web_cal WHERE cnum=#{param1} 
+	</select>
+	
+	<delete id="caldeleteDao">
+		DELETE FROM web_cal WHERE cnum=#{param1}
+	</delete>
+	
+	<update id="calqmodifyDao">
+		UPDATE web_cal set cname=#{param1}, cstartdate=#{param2}, cenddate=#{param3}, cenjoy=#{param4}, ctech=#{param5}, cmemo=#{param6} WHERE cnum=#{param7}
+	</update>
+
+	
+	  <select id="calTitleSearchlist" resultType="com.ds4.dto.CalDto">
+      SELECT t1.cnum, t1.cid, t1.cname, t1.cmemo , t1.cstartdate, t1.cenddate,t1.cenjoy,t1.ctech,t1.cmemo, t2.mname
+       FROM web_cal T1, web_member T2
+       WHERE t1.cid = t2.mid and cname like '%' || #{param1} || '%'
+       order by t1.cnum desc 
+   </select>
+   
+   <select id="calContentSearchlist" resultType="com.ds4.dto.CalDto">
+    SELECT t1.cnum, t1.cid, t1.cname, t1.cmemo , t1.cstartdate, t1.cenddate,t1.cenjoy,t1.ctech,t1.cmemo, t2.mname
+       FROM web_cal T1, web_member T2
+       WHERE t1.cid = t2.mid and cmemo like '%' || #{param1} || '%'
+       order by t1.cnum desc  
+   </select>
+   
+   <select id="calNameSearchlist" resultType="com.ds4.dto.CalDto">
+    SELECT t1.cnum, t1.cid, t1.cname, t1.cmemo , t1.cstartdate, t1.cenddate,t1.cenjoy,t1.ctech,t1.cmemo, t2.mname
+       FROM web_cal T1, web_member T2
+       WHERE t1.cid = t2.mid and cenjoy like '%' || #{param1} || '%'
+       order by t1.cnum desc 
+   </select>
+  
+  
+  
+  
+  	<!-- -->
+   
+   	  <select id="LockDao" resultType="com.ds4.dto.LockDto">
+      select * from web_Lock order by lnum desc
+   </select>
+   
+   <select id="LockInfoDao" resultType="com.ds4.dto.LockDto">
+		SELECT * FROM web_lock WHERE lnum=#{param1, jdbcType = VARCHAR}
+	</select>
+	<update id="usecheck">
+		UPDATE web_lock set use=#{param1} WHERE lnum=#{param2}
+	</update>
+		<!-- -->
+		
+		<insert id="rentDao">
+			insert into web_lockrent(rid,rname,rtel,rnum,rprice,rsdate,redate) values(#{param1, jdbcType = VARCHAR},#{param2, jdbcType = VARCHAR},#{param3, jdbcType = VARCHAR},#{param4, jdbcType = VARCHAR},#{param5, jdbcType = VARCHAR},#{param6, jdbcType = VARCHAR},#{param7, jdbcType = VARCHAR})
+		</insert>
+		<select id="lockinfoDao" resultType="com.ds4.dto.LockrentDto">
+		SELECT * FROM web_Lockrent WHERE rid=#{param1, jdbcType = VARCHAR}
+	</select>
+		
+		
+	<!-- 첨부파일 sql -->
+	<insert id="fbfileInsertDao">
+   		INSERT INTO web_upload (filenum,boardnum,filename,fileurl,orifilename,fileextension) 
+   		VALUES(webfile_seq.nextval,#{param1},#{param2},#{param3},#{param4},#{param5})
+   </insert>
+
+	<select id="fbGetfileinfoDao"  resultType="com.ds4.dto.FileDto">
+		SELECT * FROM web_upload WHERE boardnum=#{param1}
+	</select>
+	
+	<!-- 댓글 sql -->
+	<insert id="rbwriteDao">
+		INSERT INTO web_reply(rbnum,boardnum,rbid,rbcontent) VALUES (webrb_seq.nextval,#{param1},#{param2},#{param3})
+	</insert>
+	
+	<select id="rblistDao" resultType="com.ds4.dto.ReplyDto">
+		SELECT * FROM web_reply WHERE boardnum = #{param1} ORDER BY rbnum ASC
+	</select>
+	
+	<select id="fbviewDao" resultType="com.ds4.dto.BoardDto">
+		SELECT t1.qnum , t1.qid , t1.qname , t1.qcontent , t1.qemail , t1.qdate, t2.mname
+	    FROM web_board T1,web_member T2
+	    WHERE t1.qid = t2.mid AND t1.qnum = #{param1}	    
+	</select>
+	
+</mapper>
+
+
+
+
+
