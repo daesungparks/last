@@ -1191,6 +1191,12 @@ public class WebController {
 				}
 		 //=========================================================================			
 	
+				@RequestMapping(value = "/read")
+				public String read() {
+					
+					
+					return "read";
+				}
 	}
 
 

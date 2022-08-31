@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/content.css">
 <script type="text/javascript " src="${pageContext.request.contextPath}/resources/js/login.js"></script>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>아이디 찾기</title>
 <script>
 
 

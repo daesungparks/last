@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/titletext.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/content.css">
 <meta charset="UTF-8">
-<title>** profile</title>
+<title> 로그인 완료</title>
 </head>
 <body bgcolor="black">
 	<%@ include file="include/mheader.jsp" %>

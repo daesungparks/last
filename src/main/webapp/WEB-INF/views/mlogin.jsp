@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/content.css">
 <script type="text/javascript " src="${pageContext.request.contextPath}/resources/js/login.js"></script>
 <meta charset="UTF-8">
-<title>** profile</title>
+<title>관리자 로그인</title>
 </head>
 <body bgcolor="black">
 	<%@ include file="include/header2.jsp" %>

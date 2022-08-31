@@ -35,7 +35,8 @@
 <br>
 <br>
 </center>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9c1ab33fd6f5471e11b9bcf337c50a1f&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	e4b6886b495a1a5e142a49f2e6a6d9cf&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	8681454f1c5f68458dfb664a17276116&libraries=services"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {

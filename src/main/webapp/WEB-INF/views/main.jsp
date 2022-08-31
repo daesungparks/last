@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>로그인 홈</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/titletext.css">
    <style>
  body {

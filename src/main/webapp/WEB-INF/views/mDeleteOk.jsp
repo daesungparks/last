@@ -8,7 +8,7 @@
 <script type="text/javascript " src="${pageContext.request.contextPath}/resources/js/delete.js"></script>
 
 <meta charset="UTF-8">
-<title>** profile</title>
+<title>회원탈퇴완료</title>
 </head>
 <body bgcolor="black">
 	<%@ include file="include/mheader.jsp" %>

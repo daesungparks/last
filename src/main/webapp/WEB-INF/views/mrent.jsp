@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/content.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/qlist.css">
 <meta charset="UTF-8">
-<title>락커대여</title>
+<title>락커대여관리</title>
 </head>
 <body bgcolor="black">
 	<%@ include file="include/mheader.jsp" %>

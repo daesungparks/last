@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title> 홈 화면</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/titletext.css">
    <style>
  body {
@@ -113,7 +114,7 @@
     </div>
     	<div class="container">
       <div class="item front" ><img src="${pageContext.request.contextPath }/resources/img/qqhel4.jpg"></div>
-      <div class="item back" class="transbox"><input type="image" src="${pageContext.request.contextPath }/resources/img/qqhel4.jpg" onclick="location.href='calendar'" ><p>공지사항</p></div>
+      <div class="item back" class="transbox"><input type="image" src="${pageContext.request.contextPath }/resources/img/qqhel4.jpg" onclick="location.href='read'" ><p>공지사항</p></div>
     </div>
     	<div class="container">
       <div class="item front" ><img src="${pageContext.request.contextPath }/resources/img/qqhel1.jpg"></div>

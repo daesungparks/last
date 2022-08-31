@@ -9,7 +9,7 @@
 
 <script type="text/javascript " src="${pageContext.request.contextPath}/resources/js/question.js"></script>
 <meta charset="UTF-8">
-<title>** profile</title>
+<title>작성글 확인</title>
 </head>
 <body bgcolor="black">
 	<%@ include file="include/header.jsp" %>

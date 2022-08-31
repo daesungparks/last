@@ -8,7 +8,7 @@
 <script type="text/javascript " src="${pageContext.request.contextPath}/resources/js/join.js"></script>
 
 <meta charset="UTF-8">
-<title>** profile</title>
+<title>관리자 회원정보 수정</title>
 </head>
 <body bgcolor="black">
 	<%@ include file="include/mheader.jsp" %>

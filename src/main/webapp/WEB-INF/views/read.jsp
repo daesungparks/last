@@ -9,10 +9,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/content.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/qlist.css">
 <meta charset="UTF-8">
-<title>게시판 관리</title>
+<title>공지 사항</title>
 </head>
 <body bgcolor="black">
-	<%@ include file="include/mheader.jsp" %>
+	<%@ include file="include/header.jsp" %>
 	<center>
 	<table width="75%" cellspacing="0" border="0" cellpadding="20">
 	<tr>
@@ -31,44 +31,20 @@
 			<tr height="533" align="center">
 				
 				<td bgcolor="#626060" align=center >
-				<span class="content_text"> ★QUESTION BOARD★ </span><br><br>
-				
+				<span class="content_text"> ★공지사항★ </span><br><br>
+					
 					<table width="85%"border="0" cellspacing="0" cellpadding="10">
-						<tr>
-							<td class="board_title">번호</td>
-							<td class="board_title">아이디</td>
-							<td class="board_title" width="40%">내용</td>
-							<td class="board_title">이름</td>
-							<td class="board_title">날짜</td>
-						</tr>
-						</tr>
-						<c:forEach items="${mlist}" var="dto">
-						<tr>
-							<td class="board_content">${dto.qnum }</td>
-							<td class="board_content">${dto.qid }</td>
-							<td class="board_content" style="text-align: left;">
-							<a href="mqview?qnum=${dto.qnum}" style="color:black">
-							<c:choose>
-							<c:when test="${fn:length(dto.qcontent) > 25}">
-								<c:out value="${fn:substring(dto.qcontent,0,25)}">					
-								</c:out>
-							</c:when>
-							<c:otherwise>
-								<c:out value="${dto.qcontent }"></c:out>
-							</c:otherwise>
-							</c:choose>
-							</a>
-							</td>
-							<td class="board_content">${dto.qname }</td>
-							<td class="board_content">
-								<c:out value="${fn:substring(dto.qdate,0,20) }"></c:out></td>
-						</tr>
-						</c:forEach>
 						
+						<h3>회원분들께</h3>
+						
+						
+							<h5>안녕하세요 관리자 입니다 만나서 반갑습니다 !</h5>
+						<br><br><br><br><br><br><br><br>
 						<tr>
-							<td colspan="5" align="right">
-								<input class="button" value="WRITE" onclick="location.href='mquestion'">
-							</td>
+							
+						<input class="button" value="홈으로" onclick="location.href='index'">
+								
+							
 						</tr>
 					</table>
 				</td>
