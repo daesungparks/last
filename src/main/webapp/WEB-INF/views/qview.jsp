@@ -118,7 +118,7 @@
 								
 						</form>
 						<!-- 해당 글의 댓글 리스트 출력 -->
-									  <table border="1" cellpading="0" cellspacing="0" width="750">
+									  <table id="reply" border="1" cellpading="0" cellspacing="0" width="750">
 									  	<c:forEach items="${rblist }" var="rbdto">
 									  		<tr>
 									  			<td>

@@ -194,7 +194,7 @@
 		<insert id="rentDao">
 			insert into web_lockrent(rid,rname,rtel,rnum,rprice,rsdate,redate) values(#{param1, jdbcType = VARCHAR},#{param2, jdbcType = VARCHAR},#{param3, jdbcType = VARCHAR},#{param4, jdbcType = VARCHAR},#{param5, jdbcType = VARCHAR},#{param6, jdbcType = VARCHAR},#{param7, jdbcType = VARCHAR})
 		</insert>
-		<select id="lockinfoDao" resultType="com.ds4.dto.LockrentDto">
+		<select id="lockrentinfoDao" resultType="com.ds4.dto.LockrentDto">
 		SELECT * FROM web_Lockrent WHERE rid=#{param1, jdbcType = VARCHAR}
 	</select>
 		

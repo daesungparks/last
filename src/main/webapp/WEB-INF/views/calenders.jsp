@@ -35,11 +35,11 @@
 				<tr>
 				<td>
 				<h4> 회원 아이디 </h4>
-				<span class="input_area" ><input type="text" maxlength="15" name="rid" value = "${lockDto.rid }"required  readonly></span>
+				<span class="input_area" ><input type="text" maxlength="15" name="rid" value ="${lockDto.rid }"required  readonly></span>
 				</td>
 				<td>
 				<h4> 회원 이름 </h4>
-				<span class="input_area"><input type="text" maxlength="15" name="rname" value = "${lockDto.rname }" required readonly></span>
+				<span class="input_area"><input type="text" maxlength="15" name="rname" value ="${lockDto.rname }" required readonly></span>
 				</td>
 				</tr>
 				</table>
@@ -47,7 +47,7 @@
 				<tr>
 				<td>
 				<h4> 회원 전화 번호</h4>
-				<span class="input_area"><input type="text" maxlength="15" name="rtel" value = "${lockDto.rtel }"  required readonly ></span>
+				<span class="input_area"><input type="text" maxlength="15" name="rtel" value ="${lockDto.rtel }"  required readonly ></span>
 				</td>
 				</tr>
 				</table>
@@ -58,11 +58,11 @@
 				<tr>
 				<td>
 				<h4> 락커 번호 </h4>
-				<span class="input_area"><input type="text" maxlength="15" name="rnum" value = "${lockDto.rnum }"  required readonly></span>
+				<span class="input_area"><input type="text" maxlength="15" name="rnum" value ="${lockDto.rnum }"  required readonly></span>
 				</td>
 				<td>
 				<h4> 가격 </h4>
-				<span class="input_area"><input type="text" maxlength="15" name="rprice" value = "${lockDto.rprice}"  required readonly></span>
+				<span class="input_area"><input type="text" maxlength="15" name="rprice" value ="${lockDto.rprice}"  required readonly></span>
 				</td>
 				</tr>
 				</table>
@@ -70,17 +70,18 @@
 				<tr>
 				<td>
 				<h4> 시작 날짜 </h4>
-				<span class="input_area"><input type="text" maxlength="15" name="rsdate" value = "${lockDto.rsdate}"  required></span>
+				<span class="input_area"><input type="text" maxlength="15" name="rsdate" value ="${lockDto.rsdate}"  required></span>
 				</td>
 				<td>
 				<h4> 종료 날짜 </h4>
-				<span class="input_area"><input type="text" maxlength="15" name="redate"  value = "${lockDto.redate}" required></span>
+				<span class="input_area"><input type="text" maxlength="15" name="redate"  value ="${lockDto.redate}" required></span>
 				</td>
 				</tr>
 				</table>
 				
 				<div class="btnArea">
-					<button id="joinBtn" onclick="location.href='rentgoOk'">예약하기</button>
+					
+					<button id="joinBtn" onclick="location.href='rentgoOk'">수정</button>
 					<button id="joinBtn" onclick="location.href='rent'">뒤로가기</button>
 				</div>
 			</form>

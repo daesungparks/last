@@ -55,7 +55,7 @@
 							<td class="board_title" width="40%">내용</td>
 							<td class="board_title">이름</td>
 							<td class="board_title">날짜</td>
-							<td class="board_title">조회수</td>
+					
 						</tr>
 						</tr>
 						<c:forEach items="${list}" var="dto">
@@ -78,8 +78,7 @@
 							<td class="board_content">${dto.qname }</td>
 							<td class="board_content">
 								<c:out value="${fn:substring(dto.qdate,0,20) }"></c:out></td>
-							<td class="board_content">
-								<c:out value="${dto.qhit}"></c:out></td>
+						
 						
 						</tr>
 						</c:forEach>
@@ -87,7 +86,7 @@
 						<tr>
 							<td colspan="6" align="right">
 								<input class="button" value="글작성" onclick="location.href='question'">
-								<input class="button" value="답변" onclick="location.href='reply?bid='+${dto.qid }">
+								
 							</td>
 						</tr>
 					</table>

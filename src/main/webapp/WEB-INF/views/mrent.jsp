@@ -66,7 +66,7 @@
 								</c:otherwise>
 							</c:choose>
 							
-							<td class="board_content"><input class="button" type="button" value="보기" onclick="location.href='calenders?num='+${rentdto.lnum}"></td>
+							<td class="board_content"><input class="button" type="submit" value="보기" onclick="location.href='calenders?num='+${rentdto.lnum}"></td>
 							
 							
 				

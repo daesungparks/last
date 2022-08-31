@@ -9,7 +9,7 @@
 
 <script type="text/javascript " src="${pageContext.request.contextPath}/resources/js/question.js"></script>
 <meta charset="UTF-8">
-<title>** profile</title>
+<title>게시판 관리</title>
 </head>
 <body bgcolor="black">
 	<%@ include file="include/mheader.jsp" %>
@@ -55,15 +55,7 @@
 									<textarea class="questiontext" rows="5" cols="25" name="qcontent"> ${contentDto.qcontent } </textarea>
 								</td>
 							</tr>
-							<%
-								String sid = (String) session.getAttribute("sid");
-								String qid = request.getAttribute("boardId").toString();
-								if(sid == null){
-									sid = "GUEST";
-								}
-								
-								if((sid != null) && (sid.equals(qid)) || (sid.equals("admin"))){
-							%>   
+							
 						
 										
 								</tr>
@@ -73,9 +65,7 @@
 									<input class="button" type="button" value="수정" onclick="boardCheck()">&nbsp;&nbsp;
 										<input class="button" type="button" value="삭제" onclick="location.href='delete?qnum='+${contentDto.qnum}">	
 										</td>
-										<%
-											}
-										%>
+										
 										<td >
 										<input  class="button" type="button" value="뒤로가기" onclick="location.href='list'">
 										</td>
@@ -83,6 +73,36 @@
 								
 								
 						</form>
+						<!-- 해당 글의 댓글 리스트 출력 -->
+									  <table border="1" cellpading="0" cellspacing="0" width="750">
+									  	<c:forEach items="${rblist }" var="rbdto">
+									  		<tr>
+									  			<td>
+									  				댓글쓴이 : ${rbdto.rbid }
+									  			</td>
+									  		</tr>
+									  		<tr>
+									  			<td>
+									  				${rbdto.rbcontent }
+									  			</td>
+									  		</tr>
+									  		<tr>
+									  			<td>
+									  				댓글 게시일: ${rbdto.rbdate}
+									  			</td>
+									  		</tr>
+									  	</c:forEach>
+									  </table>
+									  </td>
+									  </tr>
+							
+							<td id="comment_box">
+									  <form action="mreplyOk">
+									  <input type="hidden" name="boardnum" value="${contentDto.qnum }">
+									    
+									    <textarea name ="rbcontent" placeholder="댓글을 입력해주세요"></textarea>
+										 <input type="image" id="ok_ripple" src="${pageContext.request.contextPath }/resources/img/hh4.png" >
+									 	</form>
 					</table>
 				</td>
 			</tr>

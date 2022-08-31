@@ -71,7 +71,7 @@ public interface IDao {
 	
 	
 	
-	public LockrentDto lockinfoDao(String id);
+	public LockrentDto lockrentinfoDao(String rid);
 	
 	
 	//=====================================================================

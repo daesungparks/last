@@ -8,6 +8,8 @@
     
 </head>
 <body>
+<%@ include file="include/header2.jsp" %>
+<center>
 <p style="margin-top:-12px">
     <em class="link">
         <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
@@ -16,7 +18,23 @@
     </em>
 </p>
 <div id="map" style="width:100%;height:350px;"></div>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</center>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9c1ab33fd6f5471e11b9bcf337c50a1f&libraries=services"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -56,5 +74,8 @@ geocoder.addressSearch('인천 남동구 구월로 274 (구월동) 한성빌딩 
     } 
 });    
 </script>
+
+<%@ include file="include/footer.jsp" %>
 </body>
+
 </html>

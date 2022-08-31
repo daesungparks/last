@@ -28,7 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ds4.dto.FileDto;
-import com.ds4.DateData;
+
 import com.ds4.dao.IDao;
 import com.ds4.dto.BoardDto;
 import com.ds4.dto.MMemberDto;
@@ -535,17 +535,24 @@ public class WebController {
 	public String mqview(HttpServletRequest request, Model model) {
 		
 		String qnum = request.getParameter("qnum");
+		int qnumint = Integer.parseInt(qnum);
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
+	
+		
 		BoardDto boardDto = dao.contentViewDao(qnum);
+		FileDto fileDto = dao.fbGetfileinfoDao(qnum);
 		
 		model.addAttribute("contentDto", boardDto);
+		model.addAttribute("fileDto",fileDto);
+		model.addAttribute("rblist", dao.rblistDao(qnumint));//댓글리스트 가져와서 반환하기
+		model.addAttribute("boardId",boardDto.getQid()); //게시판 아이디 불러오기
+		
 		
 		String qid = boardDto.getQid();
 		
 		model.addAttribute("boardId",qid);
-		
 		
 		return "mqview";
 	}
@@ -680,16 +687,7 @@ public class WebController {
 	      return "mDeleteOk";
 	   }
 	//=========================================================================
-	@RequestMapping(value = "/calendar" )
-	public String calendar() {
-		
-		return "calendar";
-	
-		}
-	//=========================================================================
-	
-	//=========================================================================
-	
+
 
 /*
 	@RequestMapping(value = "calender", method = RequestMethod.GET)
@@ -742,25 +740,6 @@ public class WebController {
 	}
 
 */
-	
-	
-	
-
-//=============================================================================
-	/*@RequestMapping(value = "/calviews", method = RequestMethod.GET)
-	public ModelAndView getCalendarList(ModelAndView mv, HttpServletRequest request) {
-		String viewpage = "calviews";
-		List<Calendar> calendar = null;
-		try {
-			calendar = calendarService.getCalendar();
-			request.setAttribute("calendarList", calendar);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		mv.setViewName(viewpage);
-		return mv;
-	}
-	*/
 
 
 	
@@ -809,7 +788,7 @@ public class WebController {
 		}
 	//=============================================================================
 		
-	@RequestMapping(value = "/checktest")
+	@RequestMapping(value = "/checktest")  // 예약 신청 jsp
 	public String check(HttpServletRequest request, Model model) {
 		
 		HttpSession session = request.getSession();
@@ -974,15 +953,7 @@ public class WebController {
 		return "redirect:mlist";
 	}*/
 	//=========================================================================	
-/*	
-	@RequestMapping(value="/check")
-	public String calender() {
-		
-		
-		
-		return "check";
-	}*/
-	//=========================================================================	
+
 	
 	@RequestMapping(value = "/rent")
 	public String rent(HttpServletRequest request, Model model) {
@@ -994,11 +965,12 @@ public class WebController {
 		model.addAttribute("ldto", dtos);
 		
 		
-	
+	 	
 		
 		return "rent";
 	}
 	
+	 //=========================================================================	
 	@RequestMapping(value = "/rentgo")
 	public String rentgo(HttpServletRequest request, Model model) {
 		
@@ -1020,6 +992,8 @@ public class WebController {
 		
 		return "rentgo";
 	}
+	
+	 //=========================================================================	
 	@RequestMapping(value = "/rentgoOk")
 	public String rentgoOk(HttpServletRequest request, Model model) {
 		
@@ -1042,6 +1016,7 @@ public class WebController {
 		return "redirect:callist";
 	}
 	
+	 //=========================================================================	
 	@RequestMapping(value="/replyOk")
 	public String replyOk(HttpServletRequest request , Model model) {
 		
@@ -1071,7 +1046,37 @@ public class WebController {
 		
 		return "qview";
 	}
+	 //=========================================================================	
+	@RequestMapping(value="/mreplyOk")
+	public String mreplyOk(HttpServletRequest request , Model model) {
+		
+		String boardnum = request.getParameter("boardnum");//덧글이 달릴 원 게시글의 고유번호
+		String rbcontent = request.getParameter("rbcontent");//덧글의 내용
 	
+		int qnum = Integer.parseInt(boardnum);
+		
+		HttpSession session = request.getSession();
+		String sid = (String) session.getAttribute("sid");
+		String rbid = null;
+		
+		if(sid == null) {
+			rbid = "GUEST";
+		}else {
+			rbid = sid;
+		}
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.rbwriteDao(qnum, rbid, rbcontent);
+		
+		model.addAttribute("contentDto",dao.contentViewDao(boardnum));
+		model.addAttribute("rblist",dao.rblistDao(qnum));
+		model.addAttribute("boardId",dao.contentViewDao(boardnum).getQid());
+		
+		
+		return "mqview";
+	}
+	 //=========================================================================	
 	@RequestMapping(value = "/find_id_form")
 	public String find_id_form() {
 		
@@ -1083,7 +1088,7 @@ public class WebController {
 	
 	
 	}
-	
+	 //=========================================================================	
 	
 	
 	
@@ -1106,7 +1111,7 @@ public class WebController {
 	
 	
 	}
-	
+	 //=========================================================================	
 	@RequestMapping(value = "/find_pw_form")
 	public String find_pw_form() {
 		
@@ -1118,7 +1123,7 @@ public class WebController {
 	
 	
 	}
-	
+	 //=========================================================================	
 	@RequestMapping(value = "/find_pw")
 	public String find_pw(HttpServletRequest request,Model model) {
 		
@@ -1142,19 +1147,36 @@ public class WebController {
 		@RequestMapping(value = "/calenders")
 		public String calenders(HttpServletRequest request, Model model) {
 			
-			String rid = request.getParameter("rid");
-			String lnum = request.getParameter("lnum");
+			
+			
 			
 			IDao dao = sqlSession.getMapper(IDao.class);
 			
+			HttpSession session = request.getSession();
 			
-			LockrentDto lockDto = dao.lockinfoDao(rid);
-			model.addAttribute("lockDto", lockDto);
+			String sid = (String) session.getAttribute("sid");
+
+			MemberDto mdto = dao.memberInfoDao(sid);
+			
+			model.addAttribute("mdto", mdto);
+			
+			String lnum = request.getParameter("lnum");
+
 			LockDto ldto = dao.LockInfoDao(lnum);
 			
 			model.addAttribute("ldto",ldto);
+			
+			String rid = request.getParameter("rid");
+			
+			LockrentDto lockDto = dao.lockrentinfoDao(rid);
+			model.addAttribute("lockDto", lockDto);
+			
+			
+
 			return "calenders";
 		}
+		
+		
 		//=========================================================================	
 				@RequestMapping(value = "/mrent")
 				public String mrent(HttpServletRequest request, Model model) {
@@ -1167,7 +1189,7 @@ public class WebController {
 					
 					return "mrent";
 				}
-				
+		 //=========================================================================			
 	
 	}
 
