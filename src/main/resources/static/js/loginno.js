@@ -7,7 +7,7 @@
  function alert_login() {
 	
 	if(document.login_form.mid.value.length == 0) {
-		alert("로그인 하시려는 아이디를 입력해주세요. ");
+		alert("로그인");
 		login_form.mid.focus();
 		return;
 	}
