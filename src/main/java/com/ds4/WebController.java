@@ -143,6 +143,7 @@ public class WebController {
 		
 		return "mquestion";
 	}
+	//=========================================================================
 		
 		@RequestMapping(value ="/address") 
 		public String address() {
@@ -772,13 +773,26 @@ public class WebController {
 	}
 	//=========================================================================
 		@RequestMapping(value = "/mcallist")
-		public String mcallist(Model model) {
+		public String mcallist(HttpServletRequest request, Model model) {
+			
+			 String searchKeyword = request.getParameter("searchKeyword");
+		      String searchOption = request.getParameter("searchOption");
 			
 			
 			
 			IDao dao = sqlSession.getMapper(IDao.class);
 			
 			ArrayList<CalDto> dtos = dao.callistDao();
+			
+			if(searchKeyword == null) {
+				 dtos = dao.callistDao();
+		      }else if(searchOption.equals("title")) {
+		    	  dtos = dao.calTitleSearchlist(searchKeyword);
+		      } else if(searchOption.equals("content")) {
+		    	  dtos = dao.calContentSearchlist(searchKeyword);
+		      } else if(searchOption.equals("writer")) {
+		    	  dtos = dao.calNameSearchlist(searchKeyword);
+		      }
 			
 			model.addAttribute("callist", dtos);
 			
@@ -1106,7 +1120,7 @@ public class WebController {
 		MemberDto mdto = dao.findDao(mname, memail);
 		
 		model.addAttribute("mdto", mdto);
-		
+
 		return "find_id";
 	
 	
@@ -1144,36 +1158,31 @@ public class WebController {
 	
 	}
 	//=========================================================================	
-		@RequestMapping(value = "/calenders")
-		public String calenders(HttpServletRequest request, Model model) {
-			
-			
-			
-			
-			IDao dao = sqlSession.getMapper(IDao.class);
+		@RequestMapping(value = "/mrentgo")
+		public String mrentgo(HttpServletRequest request, Model model) {
 			
 			HttpSession session = request.getSession();
 			
 			String sid = (String) session.getAttribute("sid");
-
-			MemberDto mdto = dao.memberInfoDao(sid);
-			
-			model.addAttribute("mdto", mdto);
-			
 			String lnum = request.getParameter("lnum");
-
-			LockDto ldto = dao.LockInfoDao(lnum);
-			
-			model.addAttribute("ldto",ldto);
-			
 			String rid = request.getParameter("rid");
 			
-			LockrentDto lockDto = dao.lockrentinfoDao(rid);
-			model.addAttribute("lockDto", lockDto);
 			
+			IDao dao = sqlSession.getMapper(IDao.class);
 			
 
-			return "calenders";
+			MemberDto mdto = dao.memberInfoDao(sid);
+			LockDto ldto = dao.LockInfoDao(lnum);
+			LockrentDto lockDto = dao.lockrentinfoDao(rid);
+
+
+			
+			model.addAttribute("mdto", mdto);
+			model.addAttribute("ldto",ldto);
+			model.addAttribute("lockDto", lockDto);
+			
+
+			return "mrentgo";
 		}
 		
 		
@@ -1187,8 +1196,25 @@ public class WebController {
 					model.addAttribute("ldto", dtos);
 					
 					
+					
+					
 					return "mrent";
 				}
+				
+				//=========================================================================	
+		/*		@RequestMapping(value = "/merent")
+				public String merent(HttpServletRequest request, Model model) {
+					IDao dao = sqlSession.getMapper(IDao.class);
+					
+					ArrayList<LockrentDto> dtos = dao.LockrentDao();
+					
+					model.addAttribute("lrdto", dtos);
+					
+					
+					
+					
+					return "merent";
+				}*/
 		 //=========================================================================			
 	
 				@RequestMapping(value = "/read")
@@ -1196,6 +1222,13 @@ public class WebController {
 					
 					
 					return "read";
+				}
+				
+				@RequestMapping(value = "/alert")
+				public String alert() {
+					
+					
+					return "alert";
 				}
 	}
 

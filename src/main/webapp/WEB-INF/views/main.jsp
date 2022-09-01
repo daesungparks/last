@@ -78,7 +78,7 @@
   </style>
 
 <body bgcolor="black" >
-<%@ include file="include/header2.jsp" %>
+<%@ include file="include/header.jsp" %>
    
 <center>
 

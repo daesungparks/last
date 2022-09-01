@@ -10,7 +10,7 @@
 <title>회원가입</title>
 </head>
 <body bgcolor="black">
-	<%@ include file="include/header2.jsp" %>
+	<%@ include file="include/header.jsp" %>
 	<center>
 	<table width="75%" cellspacing="0" border="0" cellpadding="20">
 	<tr>

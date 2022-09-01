@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+<script type="text/javascript " src="${pageContext.request.contextPath}/resources/js/loginno.js"></script>
 <title>header</title>
 </head>
 <body>
@@ -43,9 +44,22 @@
 					}
 				%>
 			</td>
+			<%
+					if(sessionId != null) {
+				%>
 			<td class="header_menu" width="8%">
+				
 				<a href="callist">PT 예약 등록</a>
 			</td>
+			<%
+				}else{
+			%>
+			 <td class="header_menu" width="10%">
+               <a href="alert">PT 예약 등록</a>
+            </td>
+            <%
+               }
+            %>
 			<td class="header_menu" width="7%">
 				<a href="list">자유 게시판</a>
 			</td>

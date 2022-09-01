@@ -35,9 +35,13 @@
 				
 					<table width="70%"border="0" cellspacing="0" cellpadding="10">
 						
-						<input type="hidden" name="mid" value="${mdto.mid }">
-						<input type="hidden" name="mname" value="${mdto.mname }">
-						<input type="hidden" name="mtel" value="${mdto.mtel }">
+						<input type="hidden" name="rid" value="${lockDto.rid }">
+						<input type="hidden" name="rname" value="${lockDto.rname }">
+						<input type="hidden" name="rtel" value="${lockDto.rtel }">
+						<input type="hidden" name="rsdate" value="${lockDto.rsdate }">
+						<input type="hidden" name="redate" value="${lockDto.redate }">
+					
+						
 						
 						
 						<tr>
@@ -66,7 +70,7 @@
 								</c:otherwise>
 							</c:choose>
 							
-							<td class="board_content"><input class="button" type="submit" value="보기" onclick="location.href='calenders?num='+${rentdto.lnum}"></td>
+							<td class="board_content"><input class="button" type="submit" value="보기" onclick="location.href='mrentgo?lnum='+${rentdto.lnum}"></td>
 							
 							
 				

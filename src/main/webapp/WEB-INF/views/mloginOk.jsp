@@ -47,6 +47,7 @@
 							</span>						
 						</c:otherwise>						
 						</c:choose>
+						<div><button onclick="location.href='mindex'">홈으로</button></div>
 				</td>
 			</tr>
 		</table>

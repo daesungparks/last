@@ -182,7 +182,11 @@
    	  <select id="LockDao" resultType="com.ds4.dto.LockDto">
       select * from web_Lock order by lnum desc
    </select>
-   
+   <!-- 
+    <select id="LockrentDao" resultType="com.ds4.dto.LockrentDto">
+      select * from web_Lock order by rnum desc
+   </select>
+    -->
    <select id="LockInfoDao" resultType="com.ds4.dto.LockDto">
 		SELECT * FROM web_lock WHERE lnum=#{param1, jdbcType = VARCHAR}
 	</select>

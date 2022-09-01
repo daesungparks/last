@@ -77,6 +77,7 @@ public interface IDao {
 	//=====================================================================
 	//rent dao  메서드
 	public ArrayList<LockDto> LockDao();
+//	public ArrayList<LockrentDto> LockrentDao();
 	public LockDto LockInfoDao(String lnum); //id로 검색해서 해당 id의 모든 정보를 반환한는 메서드	
 	public void usecheck(int use ,String lnum);
 	//rentgo dao 메서드

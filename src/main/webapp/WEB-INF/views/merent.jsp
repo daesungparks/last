@@ -52,39 +52,26 @@
 						<tr>
 							<td class="board_title">번호</td>
 							<td class="board_title">아이디</td>
-							<td class="board_title">종목</td>
-							<td class="board_title">트레이너</td>
-							<td class="board_title" width="40%">건의사항</td>
+							<td class="board_title">이름</td>
+							<td class="board_title">전화번호</td>
+							
 							<td class="board_title">이름</td>
 							<td class="board_title">시작</td>
 							<td class="board_title">종료</td>
 							<td class="board_title">락커대여</td>
 						</tr>
 						</tr>
-						<c:forEach items="${callist}" var="caldto">
+						<c:forEach items="${lrdto}" var="rldto">
 						<tr>
-							<td class="board_content">${caldto.cnum }</td>
-							<td class="board_content">${caldto.cid }</td>
-							<td class="board_content">${caldto.cenjoy }</td>
-							<td class="board_content">${caldto.ctech }</td>
-							<td class="board_content" style="text-align: left;">
-							<a href="calqview?cnum=${caldto.cnum}" style="color:black">
-							<c:choose>
-							<c:when test="${fn:length(caldto.cmemo) > 25}">
-								<c:out value="${fn:substring(caldto.cmemo,0,25)}">					
-								</c:out>
-							</c:when>
-							<c:otherwise>
-								<c:out value="${caldto.cmemo }"></c:out>
-							</c:otherwise>
-							</c:choose>
-							</a>
-							</td>
-							<td class="board_content">${caldto.cname }</td>
+							<td class="board_content">${rldto.rnum }</td>
+							<td class="board_content">${rldto.rid }</td>
+							<td class="board_content">${rldto.rname }</td>
+							<td class="board_content">${rldto.rtel }</td>
+							<td class="board_content">${rldto.rprice }</td>
 							<td class="board_content">
-								<c:out value="${fn:substring(caldto.cstartdate,0,20) }"></c:out></td>
+								<c:out value="${fn:substring(rldto.rsdate,0,20) }"></c:out></td>
 							<td class="board_content">
-								<c:out value="${fn:substring(caldto.cenddate,0,20) }"></c:out></td>
+								<c:out value="${fn:substring(rldto.redate,0,20) }"></c:out></td>
 							<td class="board_content" ><button onclick="location.href='mrent'">대여관리</button></td>
 							
 						

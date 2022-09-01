@@ -7,8 +7,8 @@
     <title>주소로 장소 표시하기</title>
     
 </head>
-<body>
-<%@ include file="include/header2.jsp" %>
+<body bgcolor="white">
+<%@ include file="include/header.jsp" %>
 <center>
 <p style="margin-top:-12px">
     <em class="link">
@@ -17,13 +17,10 @@
         </a>
     </em>
 </p>
-<div id="map" style="width:100%;height:350px;"></div>
+<div id="map" style="width:60%;height:350px;"></div>
+<div bgcolor="white"><h2> 인천 남동구 구월로 274 (구월동) 한성빌딩 4층, 5층 </h2></div>
 <br>
 <br>
-<br>
-<br>
-<br>
-
 <br>
 <br>
 <br>
